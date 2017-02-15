@@ -2,19 +2,36 @@
   "name": "vue-openlayers",
   "version": "0.0.1",
   "description": "humble wrapper for the powerful openlayers map api",
-  "main": "index.js",
+  "main": "dist/build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buid": "browserify src/main -o dist/build.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sombriks/vue-openlayers.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["vue", "openlayers", "map", "component"],
+  "author": "Leonardo Silveira <sombriks@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sombriks/vue-openlayers/issues"
   },
-  "homepage": "https://github.com/sombriks/vue-openlayers#readme"
+  "homepage": "https://github.com/sombriks/vue-openlayers#readme",
+  "dependencies": {
+    "openlayers": "^4.0.1",
+    "vue": "^2.1.10"
+  },
+  "devDependencies": {
+    "browserify": "^14.1.0",
+    "browserify-css": "^0.10.0",
+    "budo": "^9.4.7",
+    "vueify": "^9.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-css",
+      "vueify"
+    ]
+  }
 }
