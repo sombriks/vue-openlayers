@@ -1,8 +1,8 @@
 // let's see it working
 const Vue = require("vue");
-const Vol = require("./main");
+const VueOpenLayers = require("./main");
 
-Vue.use(Vol);
+Vue.use(VueOpenLayers);
 
 const vm = new Vue({
   el:"#mountpoint",
