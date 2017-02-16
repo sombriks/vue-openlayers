@@ -5,7 +5,9 @@
   "main": "dist/build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buid": "browserify src/main -o dist/build.js"
+    "buid": "browserify src/main.js -o dist/build.js",
+    "docs": "browserify src/docs.js -o docs/build.js",
+    "dev": "budo src/docs.js:build.js --dir docs --live --open"
   },
   "repository": {
     "type": "git",
