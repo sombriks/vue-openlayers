@@ -20,7 +20,7 @@
     "component"
   ],
   "author": "Leonardo Silveira <sombriks@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sombriks/vue-openlayers/issues"
   },
