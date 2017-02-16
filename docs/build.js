@@ -44,7 +44,7 @@ const vm = new Vue({
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ol-map',[_c('ol-marker')],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ol-map',[_c('ol-marker',{attrs:{"icon-image-url":"marker.png"}})],1)}
 __vue__options__.staticRenderFns = []
 
 },{}],3:[function(require,module,exports){
@@ -106,8 +106,21 @@ __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createEle
 __vue__options__.staticRenderFns = []
 
 },{}],6:[function(require,module,exports){
-arguments[4][2][0].apply(exports,arguments)
-},{"dup":2}],7:[function(require,module,exports){
+;(function(){
+//
+//
+//
+//
+//
+//
+
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ol-map',[_c('ol-marker')],1)}
+__vue__options__.staticRenderFns = []
+
+},{}],7:[function(require,module,exports){
 'use strict';
 // For more information about browser field, check out the browser field at https://github.com/substack/browserify-handbook#browser-field.
 
@@ -10064,7 +10077,8 @@ module.exports = {
       type: Array,
       default: () => [-38.5431, -3.71722]
     },
-    markerData: Object
+    markerData: Object,
+    iconImageUrl: String
   },
   data() {
     return {
@@ -10086,16 +10100,25 @@ module.exports = {
       geometry: new ol.geom.Point(ol.proj.fromLonLat([-38.5431, -3.71722]))
     });
     this.feature.vueComponent = this;
-    this.style = new ol.style.Style({
-      image: new ol.style.Circle({
-        radius: 7,
-        snapToPixel: false,
-        fill: new ol.style.Fill({color: 'blue'}),
-        stroke: new ol.style.Stroke({
-          color: 'white', width: 2
+    if (this.iconImageUrl) {
+      this.style = new ol.style.Style({
+        image: new ol.style.Icon({
+          src: this.iconImageUrl,
+          anchor: [0.5, 1]
         })
-      })
-    });
+      });
+    } else {
+      this.style = new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 7,
+          snapToPixel: false,
+          fill: new ol.style.Fill({color: 'blue'}),
+          stroke: new ol.style.Stroke({
+            color: 'white', width: 2
+          })
+        })
+      });
+    }
     this.feature.setStyle(this.style);
     this.vectorSource = new ol.source.Vector({
       features: [this.feature]
@@ -10105,7 +10128,7 @@ module.exports = {
     });
     this.$parent.addMarker(this.vectorLayer);//.olmap.addLayer(vectorLayer);
   },
-  
+
   methods: {
     tocentermap(e) {
       const center = e.map.getView().getCenter();

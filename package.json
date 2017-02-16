@@ -9,7 +9,7 @@
     "dev": "budo docs/docs.js:build.js --dir docs --live --open",
     "release": "npm run build ; npm run docs ; echo 'now run npm publish'"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sombriks/vue-openlayers.git"
@@ -21,7 +21,7 @@
     "component"
   ],
   "author": "Leonardo Silveira <sombriks@gmail.com>",
-  "license": "MIT",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/sombriks/vue-openlayers/issues"
   },

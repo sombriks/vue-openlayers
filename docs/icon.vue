@@ -1,6 +1,6 @@
 <template>
   <ol-map>
-    <ol-marker icon=""></ol-marker>
+    <ol-marker icon-image-url="marker.png"></ol-marker>
   </ol-map>
 </template>
 <style></style>
