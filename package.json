@@ -1,14 +1,15 @@
 {
   "name": "vue-openlayers",
-  "version": "0.0.1",
   "description": "humble wrapper for the powerful openlayers map api",
   "main": "dist/build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production browserify src/main.js -o dist/build.js",
     "docs": "cross-env NODE_ENV=production browserify src/docs.js -o docs/build.js",
-    "dev": "budo src/docs.js:build.js --dir docs --live --open"
+    "dev": "budo src/docs.js:build.js --dir docs --live --open",
+    "release": "npm run build ; npm run docs ; echo 'now run npm publish'"
   },
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sombriks/vue-openlayers.git"

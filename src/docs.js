@@ -2,7 +2,7 @@
 const Vue = require("vue");
 const Vol = require("./main");
 
-Vue.use(new Vol());
+Vue.use(Vol);
 
 const vm = new Vue({
   el:"#mountpoint",
