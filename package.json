@@ -27,17 +27,17 @@
   },
   "homepage": "https://github.com/sombriks/vue-openlayers#readme",
   "dependencies": {
-    "flexboxgrid": "^6.3.1",
     "openlayers": "^4.0.1",
-    "vue": "^2.1.10",
-    "vue-router": "^2.2.1"
+    "vue": "^2.1.10"
   },
   "devDependencies": {
     "browserify": "^14.1.0",
     "browserify-css": "^0.10.0",
-    "budo": "^9.4.7",
     "cross-env": "^3.1.4",
-    "vueify": "^9.4.0"
+    "vueify": "^9.4.0",
+    "budo": "^9.4.7",
+    "vue-router": "^2.2.1",
+    "flexboxgrid": "^6.3.1"
   },
   "browserify": {
     "transform": [
