@@ -8,6 +8,7 @@ const openlayers = require("openlayers");
 
 const olMap = require("./ol-map.vue");
 const olMarker = require("./ol-marker.vue");
+const olBalloon = require("./ol-balloon.vue");
 
 require("../node_modules/openlayers/css/ol.css");
 
@@ -17,5 +18,6 @@ module.exports = {
     // wiring project components
     Vue.component("ol-map", olMap);
     Vue.component("ol-marker", olMarker);
+    Vue.component("ol-balloon", olBalloon);
   }
 };
