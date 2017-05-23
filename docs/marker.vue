@@ -1,7 +1,14 @@
 <template>
-  <ol-map>
-    <ol-marker></ol-marker>
-  </ol-map>
+  <div>
+    <ol-map>
+      <ol-marker></ol-marker>
+    </ol-map>
+    <pre>
+      &lt;ol-map&gt;
+        &lt;ol-marker&gt;&lt;/ol-marker&gt;
+      &lt;/ol-map&gt;
+    </pre>
+  </div>
 </template>
 <style></style>
 <script></script>

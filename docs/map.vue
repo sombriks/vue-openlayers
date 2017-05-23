@@ -1,6 +1,10 @@
 <template>
-  <ol-map>
-  </ol-map>
+  <div>
+    <ol-map></ol-map>
+    <pre>
+      &lt;ol-map&gt;&lt;/ol-map&gt;
+    </pre>
+  </div>
 </template>
 <style></style>
 <script></script>

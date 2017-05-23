@@ -1,6 +1,8 @@
 <!-- ol-marker.vue -->
 <template>
-  <div></div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 <style>
   /* TODO vale expor a complexidade das 'features' do openlayer aqui? */

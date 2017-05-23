@@ -1,7 +1,7 @@
 {
   "name": "vue-openlayers",
   "description": "humble wrapper for the powerful openlayers map api",
-  "main": "dist/build.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production browserify src/main.js -o dist/build.js",
