@@ -47,6 +47,11 @@ module.exports = {
       // console.log(this.$children)
     });
 
+    this.olmap.on("pointerdrag", evt => {
+      this.$emit("pointerdrag", evt);
+      this.$children.map(e => e.$emit("pointerdrag"));
+    });
+
     if (this.autoCenter)
       this.autocenter();
 

@@ -35,11 +35,13 @@ module.exports = {
       source: this.vectorSource
     });
     this.$parent.addBalloon(this);
-    // setTimeout(x => {
-    //   this.updatepos();
-    // }, 3000)
+
     this.$on("moveend", evt => {
       this.updatepos();
+    });
+
+    this.$on("pointerdrag", evt => {
+      this.$el.style.display = "none";
     });
   },
   methods: {

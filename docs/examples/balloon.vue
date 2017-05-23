@@ -2,8 +2,10 @@
   <div>
     <ol-map>
       <ol-balloon>
-        <h1>You Are Here</h1>
-        <p>Not sure for real.</p>
+        <div style="background-color:#EEEEEE">
+          <h1>You Are Here</h1>
+          <p>Not sure for real.</p>
+        </div>
       </ol-balloon>
     </ol-map>
     <pre>
