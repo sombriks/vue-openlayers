@@ -26,6 +26,8 @@ const VueOpenLayers = require("vue-openlayers");
 // ...
 // then install the plugin
 Vue.use(VueOpenLayers);
+// ...
+// now you can see the <a href="#/map">examples</a> on how to use it on .vue components
     </pre>
   </div>
 </template>
