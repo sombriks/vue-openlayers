@@ -7,10 +7,13 @@
 
 ```javascript
 
+// require the openlayers css
+require("../node_modules/openlayers/css/ol.css");
+
 // require vue and any other shiny library
 const Vue = require('vue');
 // ...
-// at some point require vue-openlayers TODO: simplify to require("vue-openlayers")
+// at some point require vue-openlayers
 const VueOpenLayers = require("vue-openlayers");
 // ...
 // then install the plugin

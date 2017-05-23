@@ -15,10 +15,17 @@
     </ul>
     <h2>Usage</h2>
     <pre>
-      const Vue = require("vue");
-      const VueOpenLayers = require("vue-openlayers");
+// require the openlayers css
+require("../node_modules/openlayers/css/ol.css");
 
-      Vue.use(VueOpenLayers);
+// require vue and any other shiny library
+const Vue = require('vue');
+// ...
+// at some point require vue-openlayers 
+const VueOpenLayers = require("vue-openlayers");
+// ...
+// then install the plugin
+Vue.use(VueOpenLayers);
     </pre>
   </div>
 </template>
