@@ -12,7 +12,9 @@ Vue.use(VueOpenLayers);
 const routes = [
   {path: "/introduction", component: require("./introduction.vue")},
   {path: "/map", component: require("./map.vue")},
+  {path: "/mapcenter", component: require("./map-center.vue")},
   {path: "/marker", component: require("./marker.vue")},
+  {path: "/markerposition", component: require("./marker-pos.vue")},
   {path: "/icon", component: require("./icon.vue")},
   
   {path: "/", redirect: "/introduction"}

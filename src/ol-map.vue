@@ -22,9 +22,7 @@
       autoCenter: Boolean,
       center: {
         type: Array,
-        default: () => {
-          return [-38.5431, -3.71722];
-        }
+        default: () => [-38.5431, -3.71722]
       }
     },
     mounted() {
@@ -37,12 +35,12 @@
           })
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([-38.5431, -3.71722]),
+          center: ol.proj.fromLonLat(this.center),
           zoom: 13
         })
       });
       // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
-      this.olmap.on("moveend", (evt) => {
+      this.olmap.on("moveend", evt => {
         // floating openlayer event to inside the vue's ViewModel
         this.updatecenter(evt);
         this.$emit("moveend", evt);
@@ -57,26 +55,21 @@
           this.olmap.addLayer(m);
         }
       });
-      // bootstrap 
-      this.$emit("newmarker");
 
       this.olmap.on("click", (ev) => {
         const feature = this.olmap.forEachFeatureAtPixel(ev.pixel, (feature) => feature);
         if (feature)
           this.$emit("selfeature", feature);
       });
+
+      if(this.markerstoadd.length)
+        this.$emit("newmarker");
     },
     data() {
       return {
         olmap: null,
-        thecenter: [],
         markerstoadd: []
       };
-    },
-    watch: {
-      center(e) {
-        this.setcenter(e);
-      }
     },
     methods: {
       addMarker(marker) {
@@ -98,15 +91,15 @@
         }
       },
       setcenter(latlng) {
-        this.thecenter[0] = latlng[0];
-        this.thecenter[1] = latlng[1];
-        this.olmap.getView().setCenter(ol.proj.fromLonLat(this.thecenter));
+        this.center[0] = latlng[0];
+        this.center[1] = latlng[1];
+        this.olmap.getView().setCenter(ol.proj.fromLonLat(this.center));
       },
       updatecenter(evt) {
         const center = evt.map.getView().getCenter();
         const lonlat = ol.proj.toLonLat(center);
-        this.thecenter[0] = lonlat[0];
-        this.thecenter[1] = lonlat[1];
+        this.center[0] = lonlat[0];
+        this.center[1] = lonlat[1];
       }
     }
   };

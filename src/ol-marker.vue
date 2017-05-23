@@ -36,7 +36,7 @@
     mounted() {
       // http://openlayers.org/en/latest/examples/icon-color.html?q=feature
       this.feature = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.fromLonLat([-38.5431, -3.71722]))
+        geometry: new ol.geom.Point(ol.proj.fromLonLat(this.coords))
       });
       this.feature.vueComponent = this;
       if (this.iconImageUrl) {
