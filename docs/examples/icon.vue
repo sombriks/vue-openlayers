@@ -13,4 +13,8 @@
   </div>
 </template>
 <style></style>
-<script></script>
+<script>
+module.exports = {
+  name:"IconExample"
+};
+</script>

@@ -41,9 +41,10 @@ module.exports = {
     // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
     this.olmap.on("moveend", evt => {
       // floating openlayer event to inside the vue's ViewModel
-      this.updatecenter(evt);
       this.$emit("moveend", evt);
       this.$children.map(e => e.$emit("moveend"));
+      // this.updatecenter(evt); // does not work
+      // https://vuejs.org/v2/guide/components.html#Composing-Components
       // console.log(this.$children)
     });
 
@@ -63,7 +64,7 @@ module.exports = {
         this.olmap.addLayer(m);
       }
     });
-      
+
     this.$on("newballoon", (e) => {
       // como o pai só roda o mounted após todos os filhos, 
       // temos que guardar em buffer antes de fazer isso.
@@ -86,6 +87,11 @@ module.exports = {
     if (this.balloonstoadd.length)
       this.$emit("newballoon");
   },
+  watch: {
+    center(val) {
+      this.olmap.getView().setCenter(ol.proj.fromLonLat(val));
+    }
+  },
   methods: {
     addMarker(marker) {
       this.markerstoadd.push(marker);
@@ -100,8 +106,6 @@ module.exports = {
         /* geolocation is available */
         navigator.geolocation.getCurrentPosition(pos => {
           if (this.autoCenter) {
-            const lon = pos.coords.longitude;
-            const lat = pos.coords.latitude;
             this.setcenter([pos.coords.longitude, pos.coords.latitude]);
           }
         }, (err) => {
@@ -114,12 +118,12 @@ module.exports = {
       this.center[1] = latlng[1];
       this.olmap.getView().setCenter(ol.proj.fromLonLat(this.center));
     },
-    updatecenter(evt) {
-      const center = evt.map.getView().getCenter();
-      const lonlat = ol.proj.toLonLat(center);
-      this.center[0] = lonlat[0];
-      this.center[1] = lonlat[1];
-    }
+    // updatecenter(evt) {
+    //   const center = evt.map.getView().getCenter();
+    //   const lonlat = ol.proj.toLonLat(center);
+    //   this.center[0] = lonlat[0];
+    //   this.center[1] = lonlat[1];
+    // }
   }
 };
 </script>

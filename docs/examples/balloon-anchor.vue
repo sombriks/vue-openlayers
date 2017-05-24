@@ -38,3 +38,8 @@
   border-radius: 1.5em;
 }
 </style>
+<script>
+module.exports = {
+  name:"BalloonAnchorExample"
+};
+</script>
