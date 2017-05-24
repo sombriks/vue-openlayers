@@ -13,7 +13,7 @@ module.exports = {
     autoCenter: Boolean,
     center: {
       type: Array,
-      default: () => [-38.5431, -3.71722]
+      default: _ => [-38.5431, -3.71722]
     }
   },
   data() {

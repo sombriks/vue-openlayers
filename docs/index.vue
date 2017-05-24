@@ -14,6 +14,7 @@
         <li><router-link to="/markerposition">Marker Position</router-link></li>
         <li><router-link to="/icon">Marker Icon</router-link></li>
         <li><router-link to="/balloon">Balloon</router-link></li>
+        <li><router-link to="/balloonanchor">Balloon Anchor</router-link></li>
       </ul>
     </div>
     <div class="col-xs-9">

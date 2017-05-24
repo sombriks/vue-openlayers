@@ -11,9 +11,13 @@ module.exports = {
   props: {
     coords: {
       type: Array,
-      default: () => [-38.5431, -3.71722]
+      default: _ => [-38.5431, -3.71722]
     },
-    ballonData: Object,
+    balloonData: Object,
+    anchor: {
+      type: Array,
+      default: _ => [0, 0]
+    }
   },
   data() {
     return {
@@ -53,12 +57,20 @@ module.exports = {
       if (!pixel) {
         this.$el.style.display = "none";
       } else {
-        this.$el.style.display = "";
-        this.$el.style.left = (pixel[0] + this.$parent.$el.offsetLeft) + "px";
-        this.$el.style.top = (pixel[1] + this.$parent.$el.offsetTop) + "px";
+        let a = this.$parent.$el.offsetLeft;
+        let b = this.$parent.$el.offsetTop;
+        let x = (pixel[0] + a);
+        x -= this.anchor[0];
+        let y = (pixel[1] + b);
+        y -= this.anchor[1];
+        if (x - a < 0 || y - b < 0) {
+          this.$el.style.display = "none";
+        } else {
+          this.$el.style.display = "";
+          this.$el.style.left = x + "px";
+          this.$el.style.top = y + "px";
+        }
       }
-      console.log(pixel)
-      console.log(this.$parent.$el.offsetTop)
     }
   }
 };

@@ -19,6 +19,7 @@ const routes = [
   {path: "/markerposition", component: require("./examples/marker-pos.vue")},
   {path: "/icon", component: require("./examples/icon.vue")},
   {path: "/balloon", component: require("./examples/balloon.vue")},
+  {path: "/balloonanchor", component: require("./examples/balloon-anchor.vue")},
   
   {path: "/", redirect: "/introduction"}
 ];
