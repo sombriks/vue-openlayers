@@ -44,7 +44,8 @@ module.exports = {
       const center = evt.map.getView().getCenter();
       const lonlat = ol.proj.toLonLat(center);
       this.$emit("moveend", evt, lonlat);
-      this.$children.map(e => e.$emit("moveend"));
+      // notify children, some of them will need it
+      this.$children.map(e => e.$emit("moveend", evt, lonlat));
       // this.updatecenter(evt); // does not work
       // https://vuejs.org/v2/guide/components.html#Composing-Components
       // console.log(this.$children)
@@ -92,6 +93,7 @@ module.exports = {
   watch: {
     center(val) {
       this.olmap.getView().setCenter(ol.proj.fromLonLat(val));
+      // this.$emit("moveend", evt, val);
     }
   },
   methods: {

@@ -3,7 +3,6 @@
     <slot></slot>
   </div>
 </template>
-
 <script>
 const ol = require("openlayers");
 module.exports = {
@@ -24,6 +23,12 @@ module.exports = {
       feature: null
     };
   },
+  watch: {
+    coords(val) {
+      this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(val)));
+      this.updatepos();
+    }
+  },
   mounted() {
     // this.$el.parentElement.removeChild(this.$el)
     // this.$el.style.display="none";
@@ -40,7 +45,8 @@ module.exports = {
     });
     this.$parent.addBalloon(this);
 
-    this.$on("moveend", evt => {
+    this.$on("moveend", _ => {
+      // we need moveend to rearrange balloons
       this.updatepos();
     });
 
@@ -77,7 +83,3 @@ module.exports = {
   }
 };
 </script>
-
-<style>
-
-</style>

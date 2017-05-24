@@ -21,9 +21,14 @@ module.exports = {
       feature: null,
       style: null,
       vectorSource: null,
-      vectorLayer: null,
-      newcoords: []
+      vectorLayer: null
     };
+  },
+  watch: {
+    coords(val) {
+      this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(val)));
+      this.$emit("newcoords", val);
+    }
   },
   mounted() {
     // http://openlayers.org/en/latest/examples/icon-color.html?q=feature
@@ -58,19 +63,6 @@ module.exports = {
       source: this.vectorSource
     });
     this.$parent.addMarker(this.vectorLayer);//.olmap.addLayer(vectorLayer);
-  },
-
-  methods: {
-    tocentermap(e) {
-      const center = e.map.getView().getCenter();
-      const lonlat = ol.proj.toLonLat(center);
-      this.setpos(lonlat);
-    },
-    setpos(lonlat) {
-      this.newcoords = lonlat;
-      this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(lonlat)));
-      this.$emit("newcoords", this.newcoords);
-    }
   }
 };
 </script>

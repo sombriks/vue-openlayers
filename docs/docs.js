@@ -11,17 +11,19 @@ Vue.use(VueRouter);
 Vue.use(VueOpenLayers);
 
 const routes = [
-  {path: "/introduction", component: require("./examples/introduction.vue")},
-  {path: "/roadmap", component: require("./examples/roadmap.vue")},
+  {path: "/introduction", component: require("./introduction.vue")},
+  {path: "/roadmap", component: require("./roadmap.vue")},
   {path: "/map", component: require("./examples/map.vue")},
   {path: "/mapcenter", component: require("./examples/map-center.vue")},
   {path: "/mapchange", component: require("./examples/map-change.vue")},
   {path: "/mapauto", component: require("./examples/map-autocenter.vue")},
   {path: "/marker", component: require("./examples/marker.vue")},
   {path: "/markerposition", component: require("./examples/marker-pos.vue")},
-  {path: "/icon", component: require("./examples/icon.vue")},
+  {path: "/markerchange", component: require("./examples/marker-change.vue")},
+  {path: "/markericon", component: require("./examples/marker-icon.vue")},
   {path: "/balloon", component: require("./examples/balloon.vue")},
   {path: "/balloonanchor", component: require("./examples/balloon-anchor.vue")},
+  {path: "/balloonchangepos", component: require("./examples/balloon-pos-change.vue")},
   
   {path: "/", redirect: "/introduction"}
 ];
