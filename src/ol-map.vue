@@ -41,7 +41,9 @@ module.exports = {
     // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
     this.olmap.on("moveend", evt => {
       // floating openlayer event to inside the vue's ViewModel
-      this.$emit("moveend", evt);
+      const center = evt.map.getView().getCenter();
+      const lonlat = ol.proj.toLonLat(center);
+      this.$emit("moveend", evt, lonlat);
       this.$children.map(e => e.$emit("moveend"));
       // this.updatecenter(evt); // does not work
       // https://vuejs.org/v2/guide/components.html#Composing-Components

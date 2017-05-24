@@ -16,6 +16,7 @@ const routes = [
   {path: "/map", component: require("./examples/map.vue")},
   {path: "/mapcenter", component: require("./examples/map-center.vue")},
   {path: "/mapchange", component: require("./examples/map-change.vue")},
+  {path: "/mapauto", component: require("./examples/map-autocenter.vue")},
   {path: "/marker", component: require("./examples/marker.vue")},
   {path: "/markerposition", component: require("./examples/marker-pos.vue")},
   {path: "/icon", component: require("./examples/icon.vue")},

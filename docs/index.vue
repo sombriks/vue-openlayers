@@ -11,6 +11,7 @@
         <li><router-link to="/map">Map</router-link></li>
         <li><router-link to="/mapcenter">Map Center</router-link></li>
         <li><router-link to="/mapchange">Map Position Change</router-link></li>
+        <li><router-link to="/mapauto">Map Autocenter</router-link></li>
         <li><router-link to="/marker">Marker</router-link></li>
         <li><router-link to="/markerposition">Marker Position</router-link></li>
         <li><router-link to="/icon">Marker Icon</router-link></li>
