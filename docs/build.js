@@ -11542,7 +11542,9 @@ module.exports = {
         x -= this.anchor[0];
         let y = (pixel[1] + b);
         y -= this.anchor[1];
-        if (x - a < 0 || y - b < 0) {
+        let w = this.$parent.$el.offsetWidth + a;
+        let h = this.$parent.$el.offsetHeight + b;
+        if (x - a < 0 || y - b < 0 || x > w || y > h) {
           this.$el.style.display = "none";
         } else {
           this.$el.style.display = "";
