@@ -391,20 +391,44 @@ __vue__options__.staticRenderFns = []
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 module.exports = {
-  name:"MarkerPosExample",
-  data(){
+  name: "MarkerPosExample",
+  data() {
     return {
-      
+      lonlat: [-40.900025, -3.823124]
     };
+  },
+  methods: {
+    move(evt, pos) {
+      this.lonlat = pos;
+    }
   }
 };
 
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ol-map',{attrs:{"center":[-38.7307940,-3.8897860]}},[_c('ol-marker',{attrs:{"coords":[-38.7106903,-3.8984858]}})],1),_vm._v(" "),_c('pre',[_vm._v("\n    <template>\n      <ol-map :center=\"[-38.7307940,-3.8897860]\">\n        <ol-marker :coords=\"[-38.7106903,-3.8984858]\"></ol-marker>\n      </ol-map>\n    </template>\n  ")])],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ol-map',{attrs:{"center":_vm.lonlat},on:{"moveend":_vm.move}},[_c('ol-marker',{attrs:{"coords":_vm.lonlat}})],1),_vm._v("\n  "+_vm._s(_vm.lonlat)+"\n  "),_c('pre',[_vm._v("\n    <template>\n      <div>\n        <ol-map :center=\"lonlat\" @moveend=\"move\">\n          <ol-marker :coords=\"lonlat\"></ol-marker>\n        </ol-map>\n        { {lonlat}}\n      </div>\n    </template>\n    <script>\n    module.exports = {\n      name: \"MarkerPosExample\",\n      data() {\n        return {\n          lonlat: [-40.900025, -3.823124]\n        };\n      },\n      methods: {\n        move(evt, pos) {\n          this.lonlat = pos;\n        }\n      }\n    };\n    </script>\n  ")])],1)}
 __vue__options__.staticRenderFns = []
 
 },{}],10:[function(require,module,exports){
@@ -460,7 +484,7 @@ module.exports = {
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ol-map',{attrs:{"center":[-38.7307940,-3.8897860]}},[_c('ol-marker',{attrs:{"coords":[-38.7106903,-3.8984858]}})],1),_vm._v(" "),_c('pre',[_vm._v("\n    <template>\n      <ol-map :center=\"[-38.7307940,-3.8897860]\">\n        <ol-marker :coords=\"[-38.7106903,-3.8984858]\"></ol-marker>\n      </ol-map>\n    </template>\n  ")])],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ol-map',{attrs:{"center":[-38.7307940,-3.8897860]}},[_c('ol-marker',{attrs:{"coords":[-38.7676903,-3.8884858]}})],1),_vm._v(" "),_c('pre',[_vm._v("\n    <template>\n      <ol-map :center=\"[-38.7307940,-3.8897860]\">\n        <ol-marker :coords=\"[-38.7776903,-3.9584858]\"></ol-marker>\n      </ol-map>\n    </template>\n  ")])],1)}
 __vue__options__.staticRenderFns = []
 
 },{}],12:[function(require,module,exports){
@@ -11599,7 +11623,6 @@ module.exports = {
 //
 //
 //
-//
 
 const ol = require("openlayers");
 module.exports = {
@@ -11623,6 +11646,7 @@ module.exports = {
   watch: {
     coords(val) {
       this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(val)));
+      this.updatepos();
     }
   },
   mounted() {
@@ -11641,7 +11665,8 @@ module.exports = {
     });
     this.$parent.addBalloon(this);
 
-    this.$on("moveend", evt => {
+    this.$on("moveend", _ => {
+      // we need moveend to rearrange balloons
       this.updatepos();
     });
 
@@ -11732,7 +11757,8 @@ module.exports = {
       const center = evt.map.getView().getCenter();
       const lonlat = ol.proj.toLonLat(center);
       this.$emit("moveend", evt, lonlat);
-      this.$children.map(e => e.$emit("moveend"));
+      // notify children, some of them will need it
+      this.$children.map(e => e.$emit("moveend", evt, lonlat));
       // this.updatecenter(evt); // does not work
       // https://vuejs.org/v2/guide/components.html#Composing-Components
       // console.log(this.$children)
@@ -11780,6 +11806,7 @@ module.exports = {
   watch: {
     center(val) {
       this.olmap.getView().setCenter(ol.proj.fromLonLat(val));
+      // this.$emit("moveend", evt, val);
     }
   },
   methods: {
@@ -11848,9 +11875,14 @@ module.exports = {
       feature: null,
       style: null,
       vectorSource: null,
-      vectorLayer: null,
-      newcoords: []
+      vectorLayer: null
     };
+  },
+  watch: {
+    coords(val) {
+      this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(val)));
+      this.$emit("newcoords", val);
+    }
   },
   mounted() {
     // http://openlayers.org/en/latest/examples/icon-color.html?q=feature
@@ -11885,19 +11917,6 @@ module.exports = {
       source: this.vectorSource
     });
     this.$parent.addMarker(this.vectorLayer);//.olmap.addLayer(vectorLayer);
-  },
-
-  methods: {
-    tocentermap(e) {
-      const center = e.map.getView().getCenter();
-      const lonlat = ol.proj.toLonLat(center);
-      this.setpos(lonlat);
-    },
-    setpos(lonlat) {
-      this.newcoords = lonlat;
-      this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(lonlat)));
-      this.$emit("newcoords", this.newcoords);
-    }
   }
 };
 
