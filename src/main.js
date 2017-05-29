@@ -4,16 +4,11 @@
  * and open the template in the editor.
  */
 
-const openlayers = require("openlayers");
-
 const olMap = require("./ol-map.vue");
 const olMarker = require("./ol-marker.vue");
 const olBalloon = require("./ol-balloon.vue");
 
-require("../node_modules/openlayers/css/ol.css");
-
 module.exports = {
-  openlayers,
   install(Vue, options) {
     // wiring project components
     Vue.component("ol-map", olMap);

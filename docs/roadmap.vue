@@ -28,6 +28,11 @@
       <li>Add es6 variants for the components</li>
       <li>Smaller code cleanups</li>
     </ul>
+    <h2>V0.4.2</h2>
+    <ul>
+      <li>fixed small problem on balloon anchor behavior</li>
+      <li>removed one explicit openlayer css dependency, since it must be on target project</li>
+    </ul>
     <h2>V0.4.1</h2>
     <ul>
       <li>Changing versioning to better conform with <a href="http://semver.org/">semantical versioning</a></li>

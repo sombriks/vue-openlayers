@@ -1,6 +1,7 @@
 
 // to do a nicer docs example
 require("../node_modules/flexboxgrid/css/flexboxgrid.css");
+require("../node_modules/openlayers/css/ol.css");
 
 // let's see it working
 const Vue = require("vue");

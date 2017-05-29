@@ -66,14 +66,14 @@ module.exports = {
         let a = this.$parent.$el.offsetLeft;
         let b = this.$parent.$el.offsetTop;
         let x = (pixel[0] + a);
-        x -= this.anchor[0];
         let y = (pixel[1] + b);
-        y -= this.anchor[1];
         let w = this.$parent.$el.offsetWidth + a;
         let h = this.$parent.$el.offsetHeight + b;
         if (x - a < 0 || y - b < 0 || x > w || y > h) {
           this.$el.style.display = "none";
         } else {
+          x -= this.anchor[0];
+          y -= this.anchor[1];
           this.$el.style.display = "";
           this.$el.style.left = x + "px";
           this.$el.style.top = y + "px";
