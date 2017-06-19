@@ -28,6 +28,10 @@
       <li>Add es6 variants for the components</li>
       <li>Smaller code cleanups</li>
     </ul>
+    <h2>V0.4.3</h2>
+    <ul>
+      <li>made marker bigger</li>
+    </ul>
     <h2>V0.4.2</h2>
     <ul>
       <li>fixed small problem on balloon anchor behavior</li>

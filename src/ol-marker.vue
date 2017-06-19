@@ -13,6 +13,10 @@ module.exports = {
       type: Array,
       default: _ => [-38.5431, -3.71722]
     },
+    markerradius:{
+      type:[Number,String],
+      default:12
+    },
     markerData: Object,
     iconImageUrl: String
   },
@@ -46,7 +50,7 @@ module.exports = {
     } else {
       this.style = new ol.style.Style({
         image: new ol.style.Circle({
-          radius: 7,
+          radius: this.markerradius,
           snapToPixel: false,
           fill: new ol.style.Fill({ color: 'blue' }),
           stroke: new ol.style.Stroke({

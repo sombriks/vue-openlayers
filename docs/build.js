@@ -2,6 +2,7 @@
 
 // to do a nicer docs example
 require("../node_modules/flexboxgrid/css/flexboxgrid.css");
+require("../node_modules/openlayers/css/ol.css");
 
 // let's see it working
 const Vue = require("vue");
@@ -42,7 +43,7 @@ const vm = new Vue({
 });
 
 
-},{"../docs/index.vue":13,"../node_modules/flexboxgrid/css/flexboxgrid.css":17,"../src/main":24,"./examples/balloon-anchor.vue":2,"./examples/balloon-pos-change.vue":3,"./examples/balloon.vue":4,"./examples/map-autocenter.vue":5,"./examples/map-center.vue":6,"./examples/map-change.vue":7,"./examples/map.vue":8,"./examples/marker-change.vue":9,"./examples/marker-icon.vue":10,"./examples/marker-pos.vue":11,"./examples/marker.vue":12,"./introduction.vue":14,"./roadmap.vue":15,"vue":22,"vue-router":21}],2:[function(require,module,exports){
+},{"../docs/index.vue":13,"../node_modules/flexboxgrid/css/flexboxgrid.css":17,"../node_modules/openlayers/css/ol.css":18,"../src/main":24,"./examples/balloon-anchor.vue":2,"./examples/balloon-pos-change.vue":3,"./examples/balloon.vue":4,"./examples/map-autocenter.vue":5,"./examples/map-center.vue":6,"./examples/map-change.vue":7,"./examples/map.vue":8,"./examples/marker-change.vue":9,"./examples/marker-icon.vue":10,"./examples/marker-pos.vue":11,"./examples/marker.vue":12,"./introduction.vue":14,"./roadmap.vue":15,"vue":22,"vue-router":21}],2:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".blackballoon{background-color:#000;color:#fff;padding:1em;width:100px;border-radius:1.5em}")
 ;(function(){
 //
@@ -653,6 +654,15 @@ __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 module.exports = {
   name:"Roadmap"
@@ -662,7 +672,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("\n    Roadmap\n  ")]),_vm._v(" "),_c('p',[_vm._v("\n    This project aims a few goals and we'll log them there. Eventually the goals will appear as "),_c('a',{attrs:{"href":"https://github.com/sombriks/vue-openlayers/issues","target":"_blank"}},[_vm._v("github issues")]),_vm._v(" as well.\n  ")]),_vm._v(" "),_c('h2',[_vm._v("V0.9.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add search widget/datasource/provider")]),_vm._v(" "),_c('li',[_vm._v("Add results widget/datasource/provider")])]),_vm._v(" "),_c('h2',[_vm._v("V0.8.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Enable or disable map features")])]),_vm._v(" "),_c('h2',[_vm._v("V0.7.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add polygons support")])]),_vm._v(" "),_c('h2',[_vm._v("V0.6.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add lines support")])]),_vm._v(" "),_c('h2',[_vm._v("V0.5.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add es6 variants for the components")]),_vm._v(" "),_c('li',[_vm._v("Smaller code cleanups")])]),_vm._v(" "),_c('h2',[_vm._v("V0.4.1")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Changing versioning to better conform with "),_c('a',{attrs:{"href":"http://semver.org/"}},[_vm._v("semantical versioning")])]),_vm._v(" "),_c('li',[_vm._v("Added more examples")])]),_vm._v(" "),_c('h2',[_vm._v("V0.0.4")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Basic support for balloon tooltips for markers")]),_vm._v(" "),_c('li',[_vm._v("Smaller code cleanups")])]),_vm._v(" "),_c('h2',[_vm._v("V0.0.3 (first useful version)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Basic support for map and marker")]),_vm._v(" "),_c('li',[_vm._v("Suited for commonsjs (node) style export/require")])])])}]
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("\n    Roadmap\n  ")]),_vm._v(" "),_c('p',[_vm._v("\n    This project aims a few goals and we'll log them there. Eventually the goals will appear as "),_c('a',{attrs:{"href":"https://github.com/sombriks/vue-openlayers/issues","target":"_blank"}},[_vm._v("github issues")]),_vm._v(" as well.\n  ")]),_vm._v(" "),_c('h2',[_vm._v("V0.9.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add search widget/datasource/provider")]),_vm._v(" "),_c('li',[_vm._v("Add results widget/datasource/provider")])]),_vm._v(" "),_c('h2',[_vm._v("V0.8.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Enable or disable map features")])]),_vm._v(" "),_c('h2',[_vm._v("V0.7.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add polygons support")])]),_vm._v(" "),_c('h2',[_vm._v("V0.6.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add lines support")])]),_vm._v(" "),_c('h2',[_vm._v("V0.5.0 (not released yet)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Add es6 variants for the components")]),_vm._v(" "),_c('li',[_vm._v("Smaller code cleanups")])]),_vm._v(" "),_c('h2',[_vm._v("V0.4.3")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("made marker bigger")])]),_vm._v(" "),_c('h2',[_vm._v("V0.4.2")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("fixed small problem on balloon anchor behavior")]),_vm._v(" "),_c('li',[_vm._v("removed one explicit openlayer css dependency, since it must be on target project")])]),_vm._v(" "),_c('h2',[_vm._v("V0.4.1")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Changing versioning to better conform with "),_c('a',{attrs:{"href":"http://semver.org/"}},[_vm._v("semantical versioning")])]),_vm._v(" "),_c('li',[_vm._v("Added more examples")])]),_vm._v(" "),_c('h2',[_vm._v("V0.0.4")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Basic support for balloon tooltips for markers")]),_vm._v(" "),_c('li',[_vm._v("Smaller code cleanups")])]),_vm._v(" "),_c('h2',[_vm._v("V0.0.3 (first useful version)")]),_vm._v(" "),_c('ul',[_c('li',[_vm._v("Basic support for map and marker")]),_vm._v(" "),_c('li',[_vm._v("Suited for commonsjs (node) style export/require")])])])}]
 
 },{}],16:[function(require,module,exports){
 'use strict';
@@ -11598,16 +11608,11 @@ exports.insert = function (css) {
  * and open the template in the editor.
  */
 
-const openlayers = require("openlayers");
-
 const olMap = require("./ol-map.vue");
 const olMarker = require("./ol-marker.vue");
 const olBalloon = require("./ol-balloon.vue");
 
-require("../node_modules/openlayers/css/ol.css");
-
 module.exports = {
-  openlayers,
   install(Vue, options) {
     // wiring project components
     Vue.component("ol-map", olMap);
@@ -11616,7 +11621,7 @@ module.exports = {
   }
 };
 
-},{"../node_modules/openlayers/css/ol.css":18,"./ol-balloon.vue":25,"./ol-map.vue":26,"./ol-marker.vue":27,"openlayers":19}],25:[function(require,module,exports){
+},{"./ol-balloon.vue":25,"./ol-map.vue":26,"./ol-marker.vue":27}],25:[function(require,module,exports){
 ;(function(){
 //
 //
@@ -11686,14 +11691,14 @@ module.exports = {
         let a = this.$parent.$el.offsetLeft;
         let b = this.$parent.$el.offsetTop;
         let x = (pixel[0] + a);
-        x -= this.anchor[0];
         let y = (pixel[1] + b);
-        y -= this.anchor[1];
         let w = this.$parent.$el.offsetWidth + a;
         let h = this.$parent.$el.offsetHeight + b;
         if (x - a < 0 || y - b < 0 || x > w || y > h) {
           this.$el.style.display = "none";
         } else {
+          x -= this.anchor[0];
+          y -= this.anchor[1];
           this.$el.style.display = "";
           this.$el.style.left = x + "px";
           this.$el.style.top = y + "px";
@@ -11867,6 +11872,10 @@ module.exports = {
       type: Array,
       default: _ => [-38.5431, -3.71722]
     },
+    markerradius:{
+      type:[Number,String],
+      default:12
+    },
     markerData: Object,
     iconImageUrl: String
   },
@@ -11900,7 +11909,7 @@ module.exports = {
     } else {
       this.style = new ol.style.Style({
         image: new ol.style.Circle({
-          radius: 7,
+          radius: this.markerradius,
           snapToPixel: false,
           fill: new ol.style.Fill({ color: 'blue' }),
           stroke: new ol.style.Stroke({
