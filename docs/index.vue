@@ -12,10 +12,12 @@
         <li><router-link to="/mapcenter">Map Center</router-link></li>
         <li><router-link to="/mapchange">Map Position Change</router-link></li>
         <li><router-link to="/mapauto">Map Autocenter</router-link></li>
+        <li><router-link to="/mapzoom">Map Zoom</router-link></li>
         <li><router-link to="/marker">Marker</router-link></li>
         <li><router-link to="/markerposition">Marker Position</router-link></li>
         <li><router-link to="/markerchange">Marker Change Position</router-link></li>
         <li><router-link to="/markericon">Marker Icon</router-link></li>
+        <li><router-link to="/markerselection">Marker Selection</router-link></li>
         <li><router-link to="/balloon">Balloon</router-link></li>
         <li><router-link to="/balloonanchor">Balloon Anchor</router-link></li>
         <li><router-link to="/balloonchangepos">Balloon Position Change</router-link></li>

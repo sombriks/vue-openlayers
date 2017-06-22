@@ -14,6 +14,10 @@ module.exports = {
     center: {
       type: Array,
       default: _ => [-38.5431, -3.71722]
+    },
+    zoom: {
+      type: [Number, String],
+      default: 13
     }
   },
   data() {
@@ -35,17 +39,19 @@ module.exports = {
       ],
       view: new ol.View({
         center: ol.proj.fromLonLat(this.center),
-        zoom: 13
+        zoom: this.zoom
       })
     });
     // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
     this.olmap.on("moveend", evt => {
       // floating openlayer event to inside the vue's ViewModel
       const center = evt.map.getView().getCenter();
+      const zoom = evt.map.getView().getZoom();
       const lonlat = ol.proj.toLonLat(center);
-      this.$emit("moveend", evt, lonlat);
+      // emit openlayer event to vue 
+      this.$emit("moveend", evt, lonlat, zoom);
       // notify children, some of them will need it
-      this.$children.map(e => e.$emit("moveend", evt, lonlat));
+      this.$children.map(e => e.$emit("moveend", evt, lonlat, zoom));
       // this.updatecenter(evt); // does not work
       // https://vuejs.org/v2/guide/components.html#Composing-Components
       // console.log(this.$children)
@@ -121,13 +127,7 @@ module.exports = {
       this.center[0] = latlng[0];
       this.center[1] = latlng[1];
       this.olmap.getView().setCenter(ol.proj.fromLonLat(this.center));
-    },
-    // updatecenter(evt) {
-    //   const center = evt.map.getView().getCenter();
-    //   const lonlat = ol.proj.toLonLat(center);
-    //   this.center[0] = lonlat[0];
-    //   this.center[1] = lonlat[1];
-    // }
+    }
   }
 };
 </script>

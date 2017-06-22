@@ -6,10 +6,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production browserify src/main.js -o dist/build.js",
     "docs": "cross-env NODE_ENV=production browserify docs/docs.js -o docs/build.js",
-    "dev": "budo docs/docs.js:build.js --dir docs --live --open -H 127.0.0.1",
+    "dev": "budo docs/docs.js:build.js --dir docs --live --open",
     "release": "npm run build ; npm run docs ; echo 'now run npm publish'"
   },
-  "version": "0.4.3",
+  "version": "0.4.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sombriks/vue-openlayers.git"

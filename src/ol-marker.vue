@@ -13,11 +13,11 @@ module.exports = {
       type: Array,
       default: _ => [-38.5431, -3.71722]
     },
-    markerradius:{
-      type:[Number,String],
-      default:12
+    markerradius: {
+      type: [Number, String],
+      default: 12
     },
-    markerData: Object,
+    markerData: [Object, String, Number, Function],
     iconImageUrl: String
   },
   data() {
@@ -32,6 +32,15 @@ module.exports = {
     coords(val) {
       this.feature.setGeometry(new ol.geom.Point(ol.proj.fromLonLat(val)));
       this.$emit("newcoords", val);
+    },
+    iconImageUrl(val) {
+      this.style.setImage(new ol.style.Icon({
+        src: this.iconImageUrl,
+        anchor: [0.5, 1]
+      }));
+      this.$emit("newmarker");
+      // console.log()
+      // this.style.image.src = val;
     }
   },
   mounted() {

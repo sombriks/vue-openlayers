@@ -15,7 +15,7 @@
     </ul>
     <h2>Usage</h2>
     <pre>
-// require the openlayers css
+// require the openlayers css on your project.
 require("../node_modules/openlayers/css/ol.css");
 
 // require vue and any other shiny library

@@ -28,6 +28,12 @@
       <li>Add es6 variants for the components</li>
       <li>Smaller code cleanups</li>
     </ul>
+    <h2>V0.4.4</h2>
+    <ul>
+      <li>tried to fix a problem with a few samsung devices</li>
+      <li>exposed the "zoom" in the moveend which for some reason wasn't here</li>
+      <li>added a few more examples</li>
+    </ul>
     <h2>V0.4.3</h2>
     <ul>
       <li>made marker bigger</li>
