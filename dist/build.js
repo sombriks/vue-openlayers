@@ -1089,16 +1089,17 @@ module.exports = {
     this.vectorLayer = new ol.layer.Vector({
       source: this.vectorSource
     });
-    this.$parent.addBalloon(this);
 
-    this.$on("moveend", _ => {
-      // we need moveend to rearrange balloons
-      this.updatepos();
+    this.$nextTick(t => {
+      this.$parent.$emit("addballoon", this);
     });
 
-    this.$on("pointerdrag", evt => {
-      this.$el.style.display = "none";
-    });
+    this.vectorLayer.on("render", this.updatepos);
+
+  },
+  beforeDestroy() {
+    // ask for destruction
+    this.$nextTick(t => this.$parent.$emit("removeballoon", this));
   },
   methods: {
     updatepos() {
@@ -1161,9 +1162,7 @@ module.exports = {
   },
   data() {
     return {
-      olmap: null,
-      markerstoadd: [],
-      balloonstoadd: []
+      olmap: null
     };
   },
   mounted() {
@@ -1181,75 +1180,68 @@ module.exports = {
         zoom: this.zoom
       })
     });
+
+    // // bind raw events
+    // const evts = ["dblclick", "movestart", "pointermove", "singleclick", "postrender"];
+
+    // evts.map(evt => {
+    //   this.olmap.on(evt, ev => {
+    //   // console.log(ev.xy)
+    //     this.$emit(evt, ev);
+    //   });
+    // });
+
     // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
-    this.olmap.on("moveend", evt => {
+    this.olmap.on("moveend", ev => {
       // floating openlayer event to inside the vue's ViewModel
-      const center = evt.map.getView().getCenter();
-      const zoom = evt.map.getView().getZoom();
+      const center = ev.map.getView().getCenter();
+      const zoom = ev.map.getView().getZoom();
       const lonlat = ol.proj.toLonLat(center);
-      // emit openlayer event to vue 
-      this.$emit("moveend", evt, lonlat, zoom);
-      // notify children, some of them will need it
-      this.$children.map(e => e.$emit("moveend", evt, lonlat, zoom));
-      // this.updatecenter(evt); // does not work
-      // https://vuejs.org/v2/guide/components.html#Composing-Components
-      // console.log(this.$children)
+      this.$emit("moveend", ev, lonlat, zoom);
     });
 
-    this.olmap.on("pointerdrag", evt => {
-      this.$emit("pointerdrag", evt);
-      this.$children.map(e => e.$emit("pointerdrag"));
+    this.olmap.on("pointerdrag", ev => {
+      const feature = this.olmap.forEachFeatureAtPixel(ev.pixel, feature => feature);
+      const center = ev.map.getView().getCenter();
+      const zoom = ev.map.getView().getZoom();
+      const lonlat = ol.proj.toLonLat(center);
+      this.$emit("pointerdrag", ev, lonlat, zoom, feature);
+    });
+
+    this.olmap.on("click", ev => {
+      // console.log(ev.pixel)
+      const feature = this.olmap.forEachFeatureAtPixel(ev.pixel, feature => feature);
+      if (feature)
+        this.$emit("selfeature", feature);
+      this.$emit("click", ev, feature);
+
     });
 
     if (this.autoCenter)
       this.autocenter();
 
-    this.$on("newmarker", (e) => {
-      // como o pai só roda o mounted após todos os filhos, 
-      // temos que guardar em buffer antes de fazer isso.
-      while (this.markerstoadd.length) {
-        let m = this.markerstoadd.pop();
-        this.olmap.addLayer(m);
-      }
-    });
+    this.$on("addmarker", m => this.olmap.addLayer(m.vectorLayer));
 
-    this.$on("newballoon", (e) => {
-      // como o pai só roda o mounted após todos os filhos, 
-      // temos que guardar em buffer antes de fazer isso.
-      while (this.balloonstoadd.length) {
-        let m = this.balloonstoadd.pop();
-        this.olmap.addLayer(m.vectorLayer);
-        m.updatepos();
-      }
-    });
+    this.$on("removemarker", m => this.olmap.removeLayer(m.vectorLayer));
 
-    this.olmap.on("click", ev => {
-      const feature = this.olmap.forEachFeatureAtPixel(ev.pixel, feature => feature);
-      if (feature)
-        this.$emit("selfeature", feature);
-    });
+    this.$on("addballoon", b => this.olmap.addLayer(b.vectorLayer));
 
-    if (this.markerstoadd.length)
-      this.$emit("newmarker");
-
-    if (this.balloonstoadd.length)
-      this.$emit("newballoon");
+    this.$on("removeballoon", b => this.olmap.removeLayer(b.vectorLayer));
   },
   watch: {
     center(val) {
       this.olmap.getView().setCenter(ol.proj.fromLonLat(val));
-      // this.$emit("moveend", evt, val);
+    },
+    autoCenter(val) {
+      if (val)
+        this.autocenter();
+    },
+    zoom(val) {
+      console.log(val)
+      this.olmap.getView().setZoom(val);
     }
   },
   methods: {
-    addMarker(marker) {
-      this.markerstoadd.push(marker);
-      this.$emit("newmarker");
-    },
-    addBalloon(balloon) {
-      this.balloonstoadd.push(balloon);
-      this.$emit("newballoon");
-    },
     autocenter() {
       if ("geolocation" in navigator) {
         /* geolocation is available */
@@ -1355,7 +1347,12 @@ module.exports = {
     this.vectorLayer = new ol.layer.Vector({
       source: this.vectorSource
     });
-    this.$parent.addMarker(this.vectorLayer);//.olmap.addLayer(vectorLayer);
+    // tell papa to create me
+    this.$nextTick(t => this.$parent.$emit("addmarker", this));
+  },
+  beforeDestroy() {
+    // ask for destruction
+    this.$nextTick(t => this.$parent.$emit("removemarker", this));
   }
 };
 
