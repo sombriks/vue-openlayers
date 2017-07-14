@@ -28,6 +28,11 @@
       <li>Add es6 variants for the components</li>
       <li>Smaller code cleanups</li>
     </ul>
+    <h2>V0.4.5</h2>
+    <ul>
+      <li>fixed (hopefully) a memory leak</li>
+      <li>fixed missing map events</li>
+    </ul>
     <h2>V0.4.4</h2>
     <ul>
       <li>tried to fix a problem with a few samsung devices</li>

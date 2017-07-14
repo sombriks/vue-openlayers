@@ -75,7 +75,12 @@ module.exports = {
     this.vectorLayer = new ol.layer.Vector({
       source: this.vectorSource
     });
-    this.$parent.addMarker(this.vectorLayer);//.olmap.addLayer(vectorLayer);
+    // tell papa to create me
+    this.$nextTick(t => this.$parent.$emit("addmarker", this));
+  },
+  beforeDestroy() {
+    // ask for destruction
+    this.$nextTick(t => this.$parent.$emit("removemarker", this));
   }
 };
 </script>

@@ -19,6 +19,7 @@ const routes = [
   {path: "/mapchange", component: require("./examples/map-change.vue")},
   {path: "/mapauto", component: require("./examples/map-autocenter.vue")},
   {path: "/mapzoom", component: require("./examples/map-zoom.vue")},
+  {path: "/mapzoomchange", component: require("./examples/map-zoom-change.vue")},
   {path: "/marker", component: require("./examples/marker.vue")},
   {path: "/markerposition", component: require("./examples/marker-pos.vue")},
   {path: "/markerchange", component: require("./examples/marker-change.vue")},

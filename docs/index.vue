@@ -10,9 +10,10 @@
       <ul>
         <li><router-link to="/map">Map</router-link></li>
         <li><router-link to="/mapcenter">Map Center</router-link></li>
-        <li><router-link to="/mapchange">Map Position Change</router-link></li>
+        <li><router-link to="/mapchange">Map Center Change</router-link></li>
         <li><router-link to="/mapauto">Map Autocenter</router-link></li>
         <li><router-link to="/mapzoom">Map Zoom</router-link></li>
+        <li><router-link to="/mapzoomchange">Map Zoom Change</router-link></li>
         <li><router-link to="/marker">Marker</router-link></li>
         <li><router-link to="/markerposition">Marker Position</router-link></li>
         <li><router-link to="/markerchange">Marker Change Position</router-link></li>

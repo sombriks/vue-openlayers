@@ -6,7 +6,7 @@
       &lt;template&gt;
         &lt;div&gt;
           &lt;ol-map :center="curr" @moveend="showcenter"&gt;&lt;/ol-map&gt;
-          &lt;button @click.native="move"&gt;Move it&lt;/button&gt; { {curr}}
+          &lt;button @click="move"&gt;Move it&lt;/button&gt; { {curr}}
         &lt;/div&gt;
       &lt;/template&gt;
       &lt;script&gt;

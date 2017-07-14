@@ -43,16 +43,17 @@ module.exports = {
     this.vectorLayer = new ol.layer.Vector({
       source: this.vectorSource
     });
-    this.$parent.addBalloon(this);
 
-    this.$on("moveend", _ => {
-      // we need moveend to rearrange balloons
-      this.updatepos();
+    this.$nextTick(t => {
+      this.$parent.$emit("addballoon", this);
     });
 
-    this.$on("pointerdrag", evt => {
-      this.$el.style.display = "none";
-    });
+    this.vectorLayer.on("render", this.updatepos);
+
+  },
+  beforeDestroy() {
+    // ask for destruction
+    this.$nextTick(t => this.$parent.$emit("removeballoon", this));
   },
   methods: {
     updatepos() {
