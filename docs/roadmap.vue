@@ -18,14 +18,16 @@
     <h2>V0.7.0 (not released yet)</h2>
     <ul>
       <li>Add polygons support</li>
+      <li>Add lines support</li>
     </ul>
     <h2>V0.6.0 (not released yet)</h2>
     <ul>
-      <li>Add lines support</li>
-    </ul>
-    <h2>V0.5.0 (not released yet)</h2>
-    <ul>
       <li>Add es6 variants for the components</li>
+      <li>Smaller code cleanups</li>
+    </ul>
+    <h2>V0.5.5</h2>
+    <ul>
+      <li>Add "nodrag" map property</li>
       <li>Smaller code cleanups</li>
     </ul>
     <h2>V0.4.5</h2>

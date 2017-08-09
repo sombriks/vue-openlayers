@@ -17,6 +17,7 @@ const routes = [
   {path: "/map", component: require("./examples/map.vue")},
   {path: "/mapcenter", component: require("./examples/map-center.vue")},
   {path: "/mapchange", component: require("./examples/map-change.vue")},
+  {path: "/mapnodrag", component: require("./examples/map-nodrag.vue")},
   {path: "/mapauto", component: require("./examples/map-autocenter.vue")},
   {path: "/mapzoom", component: require("./examples/map-zoom.vue")},
   {path: "/mapzoomchange", component: require("./examples/map-zoom-change.vue")},

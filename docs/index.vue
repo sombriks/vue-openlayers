@@ -11,6 +11,7 @@
         <li><router-link to="/map">Map</router-link></li>
         <li><router-link to="/mapcenter">Map Center</router-link></li>
         <li><router-link to="/mapchange">Map Center Change</router-link></li>
+        <li><router-link to="/mapnodrag">Map Disable Drag</router-link></li>
         <li><router-link to="/mapauto">Map Autocenter</router-link></li>
         <li><router-link to="/mapzoom">Map Zoom</router-link></li>
         <li><router-link to="/mapzoomchange">Map Zoom Change</router-link></li>

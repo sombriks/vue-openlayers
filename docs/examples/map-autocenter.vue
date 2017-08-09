@@ -11,6 +11,6 @@
 <style></style>
 <script>
 module.exports = {
-  name:"MapExample"
+  name:"MapAutocenterExample"
 };
 </script>

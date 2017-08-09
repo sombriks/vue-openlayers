@@ -9,7 +9,7 @@
     "dev": "budo docs/docs.js:build.js --dir docs --live --open -H 127.0.0.1",
     "release": "npm run build ; npm run docs ; echo 'now run npm publish'"
   },
-  "version": "0.4.5",
+  "version": "0.5.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sombriks/vue-openlayers.git"

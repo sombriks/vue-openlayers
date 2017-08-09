@@ -1158,7 +1158,8 @@ module.exports = {
     zoom: {
       type: [Number, String],
       default: 13
-    }
+    },
+    nodrag: Boolean
   },
   data() {
     return {
@@ -1180,16 +1181,6 @@ module.exports = {
         zoom: this.zoom
       })
     });
-
-    // // bind raw events
-    // const evts = ["dblclick", "movestart", "pointermove", "singleclick", "postrender"];
-
-    // evts.map(evt => {
-    //   this.olmap.on(evt, ev => {
-    //   // console.log(ev.xy)
-    //     this.$emit(evt, ev);
-    //   });
-    // });
 
     // http://openlayers.org/en/latest/apidoc/ol.Map.html#on
     this.olmap.on("moveend", ev => {
@@ -1220,6 +1211,9 @@ module.exports = {
     if (this.autoCenter)
       this.autocenter();
 
+    if (this.nodrag)
+      this.enabledisabledragzoom();
+
     this.$on("addmarker", m => this.olmap.addLayer(m.vectorLayer));
 
     this.$on("removemarker", m => this.olmap.removeLayer(m.vectorLayer));
@@ -1239,6 +1233,9 @@ module.exports = {
     zoom(val) {
       console.log(val)
       this.olmap.getView().setZoom(val);
+    },
+    nodrag(val) {
+      this.enabledisabledragzoom();
     }
   },
   methods: {
@@ -1258,6 +1255,11 @@ module.exports = {
       this.center[0] = latlng[0];
       this.center[1] = latlng[1];
       this.olmap.getView().setCenter(ol.proj.fromLonLat(this.center));
+    },
+    enabledisabledragzoom() {
+      this.olmap.getInteractions().forEach(e => {
+        e.setActive(!this.nodrag);
+      });
     }
   }
 };
