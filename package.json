@@ -3,11 +3,10 @@
   "description": "humble wrapper for the powerful openlayers map api",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production browserify src/main.js -o dist/build.js",
-    "docs": "cross-env NODE_ENV=production browserify docs/docs.js -o docs/build.js",
-    "dev": "budo docs/docs.js:build.js --dir docs --live --open -H 127.0.0.1",
-    "release": "npm run build ; npm run docs ; echo 'now run npm publish'"
+    "build": "make docs",
+    "docs": "make docs",
+    "dev": "make dev",
+    "release": "make release"
   },
   "version": "0.5.5",
   "repository": {
@@ -33,11 +32,12 @@
   "devDependencies": {
     "browserify": "^14.1.0",
     "browserify-css": "^0.10.0",
-    "cross-env": "^3.1.4",
-    "vueify": "^9.4.0",
     "budo": "^9.4.7",
+    "cross-env": "^3.1.4",
+    "flexboxgrid": "^6.3.1",
+    "make": "^0.8.1",
     "vue-router": "^2.2.1",
-    "flexboxgrid": "^6.3.1"
+    "vueify": "^9.4.0"
   },
   "browserify": {
     "transform": [
