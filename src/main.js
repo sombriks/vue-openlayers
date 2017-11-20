@@ -9,7 +9,7 @@ const olMarker = require("./ol-marker.vue");
 const olBalloon = require("./ol-balloon.vue");
 
 module.exports = {
-  install(Vue, options) {
+  install: function (Vue, options) {
     // wiring project components
     Vue.component("ol-map", olMap);
     Vue.component("ol-marker", olMarker);
