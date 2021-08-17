@@ -6,6 +6,10 @@
     <p>
       Simple wrapper for openlayers map toolkit
     </p>
+    <p class="red">
+      Please see <a href="https://github.com/MelihAltintas/vue3-openlayers">This project</a>
+      for a maintained version.
+    </p>
     <h2>Install</h2>
     <pre>npm install vue-openlayers --save</pre>
     <h2>Dependencies</h2>
@@ -31,7 +35,12 @@ Vue.use(VueOpenLayers);
     </pre>
   </div>
 </template>
-<style></style>
+<style scoped>
+.red {
+  color:red;
+  font-weight: bolder;
+}
+</style>
 <script>
 module.exports = {
   name:"Introduction"
