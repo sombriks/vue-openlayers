@@ -1,7 +1,17 @@
 # vue-openlayers
 
+**this project doesn't receive maintenance for a while**, 
+if you need new features see [vue3-openlayers](https://github.com/MelihAltintas/vue3-openlayers) project.
+
 - humble wrapper for the powerful openlayers map api
 - demo/docs [here](https://sombriks.github.io/vue-openlayers)
+
+## maintained version
+
+For a better maintained and modern version, please see [vue3-openlayers](https://github.com/MelihAltintas/vue3-openlayers) project.
+
+This project was a pleasure to create but sadly i can't maintain that. 
+Hopefully [Melih Altıntaş](https://github.com/MelihAltintas) did a great job creating a modern wapper vor vue. 
 
 ## Usage
 
